@@ -1,5 +1,4 @@
 import { User, Settings, Bookmark } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 interface ProfileSidebarProps {
   name: string;

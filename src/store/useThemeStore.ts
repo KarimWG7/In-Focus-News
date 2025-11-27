@@ -26,7 +26,11 @@ export const useThemeStore = create<ThemeState>((set, get) => {
     toggleMode: () => {
       const isDark = get().isDarkMode;
       localStorage.setItem("mode", !isDark ? "dark" : "light");
-      isDark ? changeToLightMode() : changeToDarkMode();
+      if (isDark) {
+        changeToLightMode();
+      } else {
+        changeToDarkMode();
+      }
     },
   };
 });

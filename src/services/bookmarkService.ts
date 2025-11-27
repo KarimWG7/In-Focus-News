@@ -82,7 +82,7 @@ export async function getBookmarks(userId: string): Promise<SavedArticle[]> {
     return querySnapshot.docs.map((doc) => {
       const data = doc.data();
       // Remove the internal timestamp before returning
-      const { savedTimestamp, ...article } = data;
+      const { savedTimestamp: _savedTimestamp, ...article } = data;
       return article as SavedArticle;
     });
   } catch (error) {

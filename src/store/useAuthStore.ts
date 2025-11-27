@@ -28,7 +28,7 @@ export const useAuthStore = create<AuthState>((set) => {
         name: fbUser.displayName,
         email: fbUser.email,
         photoURL: fbUser.photoURL,
-        isAnonymous: (fbUser as any).isAnonymous || false,
+        isAnonymous: fbUser.isAnonymous || false,
       };
       set({ user, loading: false, error: null });
     } else {
@@ -59,8 +59,9 @@ export const useAuthStore = create<AuthState>((set) => {
           loading: false,
           error: null,
         });
-      } catch (err: any) {
-        set({ error: err?.message || "Sign in failed", loading: false });
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : "Sign in failed";
+        set({ error: message, loading: false });
         throw err;
       }
     },
@@ -84,8 +85,9 @@ export const useAuthStore = create<AuthState>((set) => {
           loading: false,
           error: null,
         });
-      } catch (err: any) {
-        set({ error: err?.message || "Sign up failed", loading: false });
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : "Sign up failed";
+        set({ error: message, loading: false });
         throw err;
       }
     },
@@ -104,8 +106,10 @@ export const useAuthStore = create<AuthState>((set) => {
           loading: false,
           error: null,
         });
-      } catch (err: any) {
-        set({ error: err?.message || "Guest sign-in failed", loading: false });
+      } catch (err: unknown) {
+        const message =
+          err instanceof Error ? err.message : "Guest sign-in failed";
+        set({ error: message, loading: false });
         throw err;
       }
     },
@@ -114,8 +118,9 @@ export const useAuthStore = create<AuthState>((set) => {
       try {
         await firebaseSignOut(auth);
         set({ user: null, loading: false });
-      } catch (err: any) {
-        set({ error: err?.message || "Sign out failed", loading: false });
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : "Sign out failed";
+        set({ error: message, loading: false });
         throw err;
       }
     },

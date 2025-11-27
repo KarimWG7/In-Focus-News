@@ -57,8 +57,10 @@ export default function Welcome() {
                 try {
                   await guestSignin();
                   navigate("/home");
-                } catch (e: any) {
-                  setError(e?.message || "Unable to start as guest");
+                } catch (e: unknown) {
+                  const message =
+                    e instanceof Error ? e.message : "Unable to start as guest";
+                  setError(message);
                 }
               }}
               size="lg"

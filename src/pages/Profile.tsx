@@ -4,7 +4,6 @@ import ProfileSidebar from "@/components/profile/ProfileSidebar";
 import ProfileInfo from "@/components/profile/ProfileInfo";
 import SavedArticles from "@/components/profile/SavedArticles";
 import { useAuthStore } from "@/store/useAuthStore";
-import { UserIcon } from "lucide-react";
 
 export default function Profile() {
   const [searchParams] = useSearchParams();

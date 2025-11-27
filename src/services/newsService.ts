@@ -238,7 +238,7 @@ export async function getArchiveNews(
  */
 export async function getNewsByPage(
   endpoint: "/api/1/latest" | "/api/1/news" | "/api/1/archive",
-  params: any
+  params: LatestNewsParams | SearchNewsParams | ArchiveNewsParams
 ): Promise<NewsApiResponse<PostItem>> {
   try {
     const response = await newsApi.get<NewsApiResponse<NewsArticle>>(endpoint, {

@@ -27,8 +27,6 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ user, loading, onSignOut }: MobileMenuProps) {
-  const isGuest = user?.isAnonymous || !user;
-
   return (
     <Sheet>
       <SheetTrigger asChild>
