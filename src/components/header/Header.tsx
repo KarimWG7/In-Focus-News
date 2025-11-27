@@ -19,8 +19,6 @@ export const Header = memo(function Header() {
     }
   }, [signout]);
 
-  const isGuest = user?.isAnonymous || !user;
-
   return (
     <header className="flex items-center justify-between py-3 px-4 sticky z-50 top-0 border border-border bg-background/70 backdrop-blur-3xl">
       <Logo />
